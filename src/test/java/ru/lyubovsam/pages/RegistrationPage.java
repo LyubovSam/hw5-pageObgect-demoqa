@@ -1,6 +1,5 @@
 package ru.lyubovsam.pages;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.lyubovsam.pages.components.CalendarComponent;
 
@@ -93,8 +92,9 @@ public class RegistrationPage {
         clickSubmit.click();
         return this;
     }
-    public RegistrationPage checkResultValue(String value) {
-        resultTable.shouldHave(Condition.attribute(value));
+    public RegistrationPage checkResultValue(String key, String value) {
+        resultTable.$(byText(key)).parent().shouldHave(text(value));
         return this;
     }
+
 }

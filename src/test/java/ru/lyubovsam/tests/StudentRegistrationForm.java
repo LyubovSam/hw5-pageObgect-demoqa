@@ -21,21 +21,21 @@ public class StudentRegistrationForm extends TestBase {
                         .uploadFile("image.jpg")
                         .typeCurrentAddress("currentAddress")
                         .typeState("NCR")
-                        .typeCity("Delhi")
-                        .submitClick();
+                        .typeCity("Delhi");
 
         registrationPage.calendar.DataInputComponent("12","March","1994");
+        registrationPage.submitClick();
 
 
-        registrationPage.checkResultValue("Lyubov" + lastName)
-                        .checkResultValue("test@gmail.com")
-                        .checkResultValue("Female")
-                        .checkResultValue("1234567890")
-                        .checkResultValue("12 March,1994")
-                        .checkResultValue("Biology")
-                        .checkResultValue("Music")
-                        .checkResultValue("currentAddress")
-                        .checkResultValue("NCR Delhi");
+        registrationPage.checkResultValue("Student Name", "Lyubov" + lastName)
+                        .checkResultValue("Email","test@gmail.com" )
+                        .checkResultValue("Gender","Female")
+                        .checkResultValue("Mobile","1234567890")
+                        .checkResultValue("DateOfBirth","12 March,1994")
+                        .checkResultValue("Subjects","Biology")
+                        .checkResultValue("Hobbies","Music")
+                        .checkResultValue("CurrentAddress","currentAddress")
+                        .checkResultValue("StateAndCity","NCR Delhi");
 
 
 
