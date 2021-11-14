@@ -24,7 +24,7 @@ public class StudentRegistrationForm extends TestBase {
                         .typeCity("Delhi")
                         .submitClick();
 
-        registrationPage.calendar.setDate("12","March","1994");
+        registrationPage.calendar.DataInputComponent("12","March","1994");
 
 
         registrationPage.checkResultValue("Lyubov" + lastName)
