@@ -7,19 +7,22 @@ import org.junit.jupiter.api.Test;
 public class StudentRegistrationForm extends TestBase {
     Faker faker = new Faker();
     String lastName = faker.name().lastName();
+    String firstName = faker.name().firstName();
+    String number = faker.number().digits(11);
+    String currentAddress = faker.address().streetAddress();
     @Test
     void fillForTest() {
         registrationPage.openPage();
 
-        registrationPage.typeFirstName("Lyubov")
+        registrationPage.typeFirstName(firstName)
                         .typeLastName(lastName)
                         .typeEmail("test@gmail.com")
                         .chooseGender("Female")
-                        .typeNumber("1234567890")
+                        .typeNumber(number)
                         .typeSubject("Biology")
                         .chooseHobby("Music")
                         .uploadFile("image.jpg")
-                        .typeCurrentAddress("currentAddress")
+                        .typeCurrentAddress(currentAddress)
                         .typeState("NCR")
                         .typeCity("Delhi");
 
@@ -27,14 +30,14 @@ public class StudentRegistrationForm extends TestBase {
         registrationPage.submitClick();
 
 
-        registrationPage.checkResultValue("Student Name", "Lyubov" + lastName)
+        registrationPage.checkResultValue("Student Name", firstName + lastName)
                         .checkResultValue("Email","test@gmail.com" )
                         .checkResultValue("Gender","Female")
-                        .checkResultValue("Mobile","1234567890")
+                        .checkResultValue("Mobile",number)
                         .checkResultValue("DateOfBirth","12 March,1994")
                         .checkResultValue("Subjects","Biology")
                         .checkResultValue("Hobbies","Music")
-                        .checkResultValue("CurrentAddress","currentAddress")
+                        .checkResultValue("CurrentAddress",currentAddress)
                         .checkResultValue("StateAndCity","NCR Delhi");
 
 
